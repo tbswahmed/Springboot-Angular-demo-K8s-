@@ -1,0 +1,11 @@
+- name: build docker image for Docker Hub docker-registry
+  docker_image:
+    docker_api_version: "{{ docker_api_version }}"
+    path: "{{ docker_working_directory }}/{{ app_name }}/{{ app_dockerfile_path }}"
+    tag: "{{ app_source_version }}"
+    name: "{{ docker_registry_username}}/{{ docker_image_name }}"
+    state: build
+
+
+- name: push docker image to docker-registry {{ docker_registry }}
+  shell: "docker push {{ docker_registry_username }}/{{ docker_image_name }}:{{ app_source_version }}"

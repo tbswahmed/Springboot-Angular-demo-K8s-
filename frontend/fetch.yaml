@@ -1,0 +1,9 @@
+- name: copy to awx
+  host: 192.168.81.141
+  become: true
+  tasks:
+    - name: festch file
+      fetch:
+        src: ~/test
+        dest: ~/ 
+        flat: yes

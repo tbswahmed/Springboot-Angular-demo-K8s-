@@ -1,0 +1,7 @@
+---
+- name: copy to awx
+  hosts: localhost
+  become: true
+  tasks:
+    - name: build
+      command: ng build --prod   

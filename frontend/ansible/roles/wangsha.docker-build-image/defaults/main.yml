@@ -1,0 +1,18 @@
+app_source_repo: https://github.com/docker-library/hello-world.git
+app_source_version: master
+app_dockerfile_path: /
+app_name: hello-world
+
+docker_registry: https://index.docker.io/v1/
+#docker-registry.localhost:3080
+docker_image_name: "{{ app_name }}"
+docker_registry_login: yes
+docker_registry_username: your_dockerhub_username
+docker_registry_password: your_dockerhub_password
+docker_registry_email: your_dockerhub_email
+
+
+docker_working_directory: /home
+docker_api_version: "1.20"
+
+

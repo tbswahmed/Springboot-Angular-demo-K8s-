@@ -1,0 +1,14 @@
+---
+- hosts: 'localhost'
+  vars:
+    docker_api_version: "1.20"
+  roles:
+    - role: wangsha.docker-registry
+      docker_registry_directory_volumes:
+       - "/etc/registry/images:/var/lib/registry:rw"
+      docker_registry_file_volumes: []
+      become: true
+    - role: 'docker-build-image'
+      become: true
+      docker_registry: localhost:5000
+      docker_registry_login: no

@@ -1,0 +1,23 @@
+- name: get app code
+  git:
+    repo: "{{ app_source_repo }}"
+    accept_hostkey: yes
+    dest: "{{ docker_working_directory }}/{{ app_name }}"
+    version: "{{ app_source_version }}"
+
+
+- name: login to docker docker-registry
+  docker_login:
+    registry: "{{ docker_registry }}"
+    username: "{{ docker_registry_username }}"
+    password: "{{ docker_registry_password }}"
+    email: "{{ docker_registry_email }}"
+  when: docker_registry_login
+
+
+- include: docker_default_registry.yml
+  when: docker_registry == 'https://index.docker.io/v1/'
+
+
+- include: docker_private_registry.yml
+  when: docker_registry != 'https://index.docker.io/v1/'
