@@ -1,0 +1,16 @@
+# TLS/SSL Certificates and Keys
+*.crt
+*.key
+*.pem
+*.csr
+*.srl
+*.cert
+*.der
+*.pfx
+*.p12
+*.keystore
+*.truststore
+
+# Kubernetes Secrets
+*secret*.yaml
+*secret*.yml
