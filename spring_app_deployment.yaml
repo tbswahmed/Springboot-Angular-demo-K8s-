@@ -1,0 +1,49 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-spring
+  namespace: spring-app
+  labels:
+    app: app-spring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-spring
+  template:
+    metadata:
+      labels:
+        app: app-spring
+    spec:
+      containers:
+      - name: app-spring
+        image: tybahmed/spring-app:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+          - name: http
+            containerPort: 8089
+        resources:
+          limits:
+            cpu: 0.2
+            memory: "200Mi"
+        env:
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              name: mysql-secrets
+              key: mysql-user-password
+        - name: DB_HOST
+          valueFrom:
+            configMapKeyRef:
+              name:  mysql-config-map
+              key: mysql-server
+        - name: DB_NAME
+          valueFrom:
+            configMapKeyRef:
+              name:  mysql-config-map
+              key: mysql-database-name
+        - name: DB_USERNAME
+          valueFrom:
+            configMapKeyRef:
+              name: mysql-config-map
+              key: mysql-user-username

@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-spring
+  namespace: spring-app
+  labels:
+    app: app-spring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: app-spring
+  template:
+    metadata:
+      labels:
+        app: app-spring
+    spec:
+      containers:
+      - name: app-spring
+        image: tybahmed/spring-app:v1
+        imagePullPolicy: IfNotPresent
+        ports:
+          - name: http
+            containerPort: 8089
+        resources:
+          limits:
+            cpu: 0.2
+            memory: "200Mi"
+        env:
+        - name: SPRING_DATASOURCE_URL
+          value: "jdbc:mysql://mysql-standalone:3306/achatdb?createDatabaseIfNotExist=true&useSSL=false"
+        - name: SPRING_DATASOURCE_USERNAME
+          value: "root" # Replace with your actual username
+        - name: SPRING_DATASOURCE_PASSWORD
+          value: "root" # Replace with your actual password
+        - name: SPRING_JPA_HIBERNATE_DDL_AUTO
+          value: "update"
+        - name: SPRING_JPA_SHOW_SQL
+          value: "true"
+
