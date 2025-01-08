@@ -2,13 +2,13 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-myservicea
-  namespace: default
+  namespace: spring-app
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+    kubernetes.io/ingress.allow-http: "true"
 spec:
   ingressClassName: nginx
-  tls:
-  - hosts:
-    - pacemacker-1.onetech-group.corp
-    secretName: your-tls-secret    # Reference to the K8s Secret containing your TLS cert
   rules:
   - host: pacemacker-1.onetech-group.corp
     http:

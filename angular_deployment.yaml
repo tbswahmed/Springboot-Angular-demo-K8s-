@@ -4,7 +4,7 @@ metadata:
   name: angular-frontend
   namespace: spring-app
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: angular-frontend
@@ -15,14 +15,14 @@ spec:
     spec:
       containers:
       - name: angular-frontend
-        image: tybahmed/front-test:v1 
+        image: tybahmed/front:v1 
         ports:
         - containerPort: 80
         env:
-        - name: BASE_URL
-          value: "http://app-spring" 
+        - name: BASEURL
+          value: "http://pacemacker-1.onetech-group.corp" 
         - name: PORT
-          value: "8089"                          
+          value: "31771"                          
         resources:
           requests:
             memory: "128Mi"
