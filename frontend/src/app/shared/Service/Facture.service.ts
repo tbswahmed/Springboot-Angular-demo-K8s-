@@ -13,7 +13,7 @@ export class FactureService {
     private envService: EnvironmentService
   ) {
     // Construct the API URL using environment variables
-    this.API_URL = `${this.envService.baseUrl}:${this.envService.port}/SpringMVC/facture`;
+    this.API_URL = `${this.envService.baseUrl}/SpringMVC/facture`;
   }
 
   getAllFactures() {

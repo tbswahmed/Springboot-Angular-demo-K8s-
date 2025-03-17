@@ -10,7 +10,7 @@ export class EnvironmentService {
     return this.window.env?.BASEURL || 'http://localhost';
   }
 
-  get port(): string {
-    return this.window.env?.PORT || '8080';
-  }
+  //get port(): string {
+  //  return this.window.env?.PORT || '8080';
+  //}
 }

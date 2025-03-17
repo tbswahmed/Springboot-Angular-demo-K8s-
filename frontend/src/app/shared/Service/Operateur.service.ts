@@ -9,7 +9,7 @@ export class OperateurService {
   private API_URL: string;
 
   constructor(private httpClient: HttpClient, private envService: EnvironmentService) { 
-    this.API_URL = `${this.envService.baseUrl}:${this.envService.port}/SpringMVC/operateur`;
+    this.API_URL = `${this.envService.baseUrl}/SpringMVC/operateur`;
 
   }
 
