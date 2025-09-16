@@ -3,7 +3,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: mysql-app
-  namespace: spring-app
+  namespace: default
   labels:
     app: mysql-app
 spec:
